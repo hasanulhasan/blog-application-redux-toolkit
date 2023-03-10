@@ -1,12 +1,12 @@
 import { fetchPost } from "../features/Post/PostSlice";
 
 
-const updateSave = (doId, currentStatus) => {
+const updateLikes = (doId, likes) => {
   return async (dispatch) => {
     const response = await fetch(`http://localhost:9000/blogs/${doId}`, {
       method: 'PATCH',
       body: JSON.stringify({
-        isSaved: !currentStatus
+        likes: likes + 1
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -17,4 +17,4 @@ const updateSave = (doId, currentStatus) => {
   }
 }
 
-export default updateSave;
+export default updateLikes;
