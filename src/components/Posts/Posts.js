@@ -28,7 +28,6 @@ const Posts = () => {
     content = posts
       .filter(post => {
         if (sort === 'newest') {
-          console.log(post);
           return post
         }
         else if (sort === 'most_liked') {
