@@ -4,9 +4,6 @@ import { isSaved } from '../../features/Filter/FilterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  // const { isSave } = useSelector(state => state.filter);
-  // const [checkValue, setCheckValue] = useState();
-  // console.log(checkValue);
 
   return (
     <div className="sidebar-content">

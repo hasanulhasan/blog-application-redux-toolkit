@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  post: [],
+  sort: '',
   isSave: ''
 }
 
@@ -11,9 +11,12 @@ const filterSlice = createSlice({
   reducers: {
     isSaved: (state, action) => {
       state.isSave = action.payload;
+    },
+    sortSelected: (state, action) => {
+      state.sort = action.payload;
     }
   }
 })
 
 export default filterSlice.reducer;
-export const { isSaved } = filterSlice.actions
+export const { isSaved, sortSelected } = filterSlice.actions

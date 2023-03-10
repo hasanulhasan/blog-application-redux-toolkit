@@ -8,7 +8,7 @@ const Posts = () => {
   const { posts, isLoading, isError, error } = useSelector(state => state.posts);
   const dispatch = useDispatch();
   // console.log(posts)
-  const { isSave } = useSelector(state => state.filter)
+  const { isSave, sort } = useSelector(state => state.filter)
 
   useEffect(() => {
     dispatch(fetchPosts(isSave))
@@ -24,7 +24,21 @@ const Posts = () => {
     content = <div>Post was not found</div>
   }
   if (!isError && !isLoading && posts?.length > 0) {
-    content = posts.map(post => <Post key={post.id} post={post} />)
+
+    content = posts
+      .filter(post => {
+        if (sort === 'newest') {
+          console.log(post);
+          return post
+        }
+        else if (sort === 'most_liked') {
+          return post
+        }
+        else {
+          return post
+        }
+      })
+      .map(post => <Post key={post.id} post={post} />)
   }
 
   return (
