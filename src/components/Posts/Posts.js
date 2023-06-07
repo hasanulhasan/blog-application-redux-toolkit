@@ -7,14 +7,13 @@ import Post from './Post';
 const Posts = () => {
   const { posts, isLoading, isError, error } = useSelector(state => state.posts);
   const dispatch = useDispatch();
-  // console.log(posts)
   const { isSave, sort } = useSelector(state => state.filter)
 
   useEffect(() => {
     dispatch(fetchPosts(isSave))
   }, [dispatch, isSave])
 
-  //decide for rendering
+
   let content;
   if (isLoading) content = <Loading />
   if (isLoading && isError) {
@@ -24,7 +23,6 @@ const Posts = () => {
     content = <div>Post was not found</div>
   }
   if (!isError && !isLoading && posts?.length > 0) {
-
     content = posts
       .filter(post => {
         if (sort === 'newest') {
@@ -42,9 +40,7 @@ const Posts = () => {
 
   return (
     <main className="post-container" id="lws-postContainer">
-      {/* <!-- single post --> */}
       {content}
-      {/* <!-- Single Post Ends --> */}
     </main>
   );
 };
