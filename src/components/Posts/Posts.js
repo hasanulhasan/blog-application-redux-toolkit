@@ -34,6 +34,14 @@ const Posts = () => {
         else {
           return post
         }
+      }).sort((a, b) => {
+        if (sort === 'newest') {
+          var dateA = new Date(a.createdAt).getTime();
+          var dateB = new Date(b.createdAt).getTime();
+          return dateB - dateA
+        }
+        else if (sort === 'most_liked') { return b.likes - a.likes }
+        else { return null }
       })
       .map(post => <Post key={post.id} post={post} />)
   }
